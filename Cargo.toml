@@ -4,7 +4,7 @@ version = "1.0.0"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/yoshuawuyts/rust-cli"
 documentation = "https://docs.rs/rust-cli"
-description = "Rust CLI API"
+description = "rust(1) CLI prototype"
 readme = "README.md"
 edition = "2018"
 keywords = []
@@ -16,5 +16,6 @@ authors = [
 [features]
 
 [dependencies]
+structopt = "0.3.25"
 
 [dev-dependencies]

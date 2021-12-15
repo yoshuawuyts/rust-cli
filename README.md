@@ -1,7 +1,7 @@
 <h1 align="center">rust-cli</h1>
 <div align="center">
   <strong>
-    Rust CLI API
+    rust(1) CLI prototype
   </strong>
 </div>
 
