@@ -20,7 +20,8 @@ use structopt::StructOpt;
 #[derive(Debug, StructOpt)]
 #[structopt(name = "rust", about = "The Rust Programming Language")]
 struct Opt {
-    // version: String,
+    /// Use a specific toolchain version.
+    toolchain: Option<String>,
     #[structopt(subcommand)] // Note that we mark a field as a subcommand
     cmd: Command,
 }
