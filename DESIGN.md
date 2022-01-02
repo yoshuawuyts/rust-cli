@@ -31,22 +31,85 @@ rust
 ├── bench      Run the benchmarks
 ├── build      Compile the current package
 ├── check      Check a local package for errors      
-├── crate      Manage the local crates
-│   ├──  add        Add a dependency
-│   ├──  install    Install a crate globally
-│   ├──  login      Login to crates.io
-│   ├──  remove     Remove a local crate
-│   ├──  search     Search for a crate
-│   ├──  tree       List all installed crates
-│   ├──  update     Update dependencies as recorded in the local lock file
-│   ├──  upgrade    Upgrade dependencies as specified in the local manifest file
-│   ├──  vendor     Vendor all dependencies for a project locally
-│   └──  yank       Remove a pushed crate from the index
+├── debug      Run the interactive debugger
+├── dep        Manage the local dependencies
+│   ├── audit       Create a report on your local dependencies
+│   ├── add         Add a dependency to matched packages
+│   ├── clean       Remove all local dependencies
+│   ├── fetch       Fetch dependencies from the network
+│   ├── remove      Remove a local dependency
+│   ├── tree        List all installed dependencies
+│   ├── update      Update dependencies as recorded in the local lock file
+│   ├── upgrade     Upgrade dependencies as specified in the local manifest file
+│   ├── vendor      Vendor all dependencies for a project locally
+│   ├── prune       Remove all unused dependencies from the project
+│   └── why         Show why a package was required
 ├── doc          Compile the package documentation     
+├── fmt          Format the source code
+├── lint         Check for common issues in Rust source code
+├── profile      Run the interactive profiler
+├── registry     Manage the registry
+│   ├── cache       Manage the local registry cache
+│   ├── login       Login to a registry
+│   ├── logout      Log out from a registry
+│   ├── owner       Manage the owner of a crate
+│   ├── search      Search for a crate
+│   ├── publish     Publish a crate to the registry
+│   └── yank        Remove a pushed crate from the index
 ├── run          Run a binary or example of the local package
-├── self         Manage the command itself
+├── self         Manage the rust command itself
+│   ├── set         Modify a local setting
+│   └── component   Manage locally installed components
+├── server       Run the LSP language server
 ├── task         Run a custom subcommand
+│   └── list        List all tasks
 ├── test         Run the tests
+│   ├── audit       Validate all local audit rules
+│   ├── compile     Run compile tests
+│   ├── doc         Run documentation tests
+│   ├── fuzz        Run fuzz tests
+│   ├── lint        Test for common issues in Rust source code
+│   ├── fmt         Validate the formatting
+│   ├── shrink      Shrink a rust source program, preserving interesting properties
+│   ├── snapshot    Run snapshot tests
+│   └── unit        Manage the owner of a crate
 ├── toolchain    Manage the local Rust toolchain       
+│   ├── check       Check for updates to locally installed toolchains
+│   ├── update      Update locally installed toolchains
+│   ├── override    Override the currently used toolchain
+│   ├── create      Create a custom toolchain
+│   ├── list        List installed toolchains
+│   ├── add         Install or update a toolchain
+│   └── remove      Remove an installed toolchain
 └── workspace    Manage the current workspace
+│   ├── add         Add a new package to the local workspace
+│   ├── init        Create a new workspace
+│   ├── publish     Publish packages in the current project
+│   ├── version     Bump version of packages changed since the last release
+│   ├── list        List local packages
+│   ├── changed     List local packages that have changed since the last release
+│   ├── diff        Diff local packages that have changed since the last release
+│   ├── exec        Execute an arbitrary command in each package
+│   └── link        Link local packages as dependencies of each other
 ```
+
+Universal flags
+```txt
+--debug        Spin up a debugger on a breakpoint
+--profile      Profile the operation
+--backtrace    Generate a backtrace on crash
+--fix          `rust test` commands should all be auto-fixable
+--toolchain    To select a toolchain
+-q, --quiet    To suppress all output
+-v, --verbose  To enable verbose output
+-h, --help     Print help information
+```
+
+Contentious topics
+- Should `rust(1)` act as a system-wide package manager?
+    - It competes with the system package manager
+    - Makes it easy to publish rust tools
+    - But does make `docs.rs` often a bit, uh, lackluster
+    - But usually far easier to publish to all the platforms to than using
+      system package managers
+    -Solution: spin this out into its own subcommand
